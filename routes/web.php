@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FilmeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [FilmeController::class,'index']);
+Route::get('/create/', [FilmeController::class,'create']);
+/*Route::get('/insert/', 'FilmeController@insertFilme');
+Route::get('/delete/', 'FilmeController@deleteFilme');
+Route::get('/update/', 'FilmeController@updateFilme');
+*/
