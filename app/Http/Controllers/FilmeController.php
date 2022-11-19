@@ -16,7 +16,6 @@ class FilmeController extends Controller
     public function index()
     {
         $filmes = Filme::get();
-        //$filmes = DB::select('select * from filme');
         return view('indexFilme',['filmes' => $filmes]);
     }
 
@@ -27,8 +26,7 @@ class FilmeController extends Controller
      */
     public function create()
     {
-        DB::insert('insert into Filme (ID, Titulo, Diretor, Ano_Produção) 
-                    values (?, ?, ? ,?)', [1, 'As Aventuras de TinTin', 'Steven Spielberg', '2011']);
+        return view('insertFilme');
     }
 
     /**
@@ -39,7 +37,17 @@ class FilmeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title'=>'required',
+            'director'=>'required',
+            'year_prod'=>'required|int'
+        ]);
+        $filme = new Filme;
+        $filme->Titulo = $request->title;
+        $filme->Diretor = $request->director;
+        $filme->Ano_Producao = $request->year_prod;
+        $filme->save();
+        return redirect()->route('filme.index');
     }
 
     /**
@@ -59,9 +67,9 @@ class FilmeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Filme $filme)
     {
-        //
+        return view('insertFilme',['filme' => $filme]);
     }
 
     /**
@@ -71,9 +79,20 @@ class FilmeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'title'=>'required',
+            'director'=>'required',
+            'year_prod'=>'required|int'
+        ]);
+        $filme = Filme::find($request->id);
+        $filme->Titulo = $request->title;
+        $filme->Diretor = $request->director;
+        $filme->Ano_Producao = $request->year_prod;
+        $filme->save();
+        return redirect()->route('filme.index');
     }
 
     /**
@@ -82,8 +101,21 @@ class FilmeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $request->validate([
+            'id'=>'required'
+        ]); 
+        $filme = Filme::find($request->id);
+        $filme->delete();
+        return redirect()->route('filme.index');
     }
+
+    /* GET */
+    public function delTemp()
+    {
+        $filmes = Filme::get();
+        return view('deleteFilme',['filmes' => $filmes]);
+    }
+    
 }

@@ -14,12 +14,15 @@ use App\Http\Controllers\FilmeController;
 |
 */
 
-//Auth::routes();
-Route::get('/', [FilmeController::class,'index']);
-Route::get('/create/', [FilmeController::class,'create']);
-Route::get('/create/insert/', [FilmeController::class,'store']);
-Route::get('/edit/', [FilmeController::class,'edit']);
-Route::get('/delete/', [FilmeController::class,'destroy']);
-Route::get('/update/', [FilmeController::class,'update']);
+Route::get('/', [FilmeController::class,'index'])->name('filme.index');
+Route::get('/create/', [FilmeController::class,'create'])->name('filme.create');
+Route::get('/create/insert/', [FilmeController::class,'store'])->name('filme.store');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/delete/', [FilmeController::class,'delTemp'])->name('filme.delete');
+
+Route::post('/delete/', [FilmeController::class,'destroy'])->name('filme.deleteReq');
+
+Route::get('/update/{filme:ID}', [FilmeController::class,'edit'])->name('filme.edit');
+Route::post('/update/', [FilmeController::class,'update'])->name('filme.update');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);

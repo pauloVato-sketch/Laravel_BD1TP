@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Avaliacao', function (Blueprint $table) {
-            $table->unsignedBigInteger('ID_Filme');
-            $table->foreign('ID_Filme')->references('ID')->on('Filme');
-            $table->unsignedBigInteger('ID_Usuario');
-            $table->foreign('ID_Usuario')->references('ID')->on('Usuario');
+        Schema::create('Avaliacoes', function (Blueprint $table) {
+            $table->foreignId('Filme_ID')->constrained();
+            $table->foreignId('Usuario_ID')->constrained();
             $table->float('Nota')->nullable();
             $table->timestamps();
         });

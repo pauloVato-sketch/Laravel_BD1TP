@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Genero', function (Blueprint $table) {
+        Schema::create('Generos', function (Blueprint $table) {
             $table->id('ID');
             $table->string('Descricao');
-            $table->unsignedBigInteger('ID_Filme');
-            $table->foreign('ID_Filme')->references('ID')->on('Filme');
+            $table->foreignId('Filme_ID')->constrained();
             $table->timestamps();
         });
     }

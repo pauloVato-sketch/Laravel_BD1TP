@@ -5,9 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Filme extends Model
+class Filme extends DefaultModel
 {
     use HasFactory;
-    protected $table = 'Filme';
-    protected $fillable = ['ID', 'Titulo', 'Diretor', 'Ano_Produção'];
 }

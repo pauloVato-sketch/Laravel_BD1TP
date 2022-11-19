@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Elenco', function (Blueprint $table) {
-            $table->unsignedBigInteger('ID_Filme');
-            $table->foreign('ID_Filme')->references('ID')->on('Filme');
-            $table->unsignedBigInteger('Codigo_Ator');
-            $table->foreign('Codigo_Ator')->references('Codigo')->on('Ator');
+        Schema::create('Elencos', function (Blueprint $table) {
+            $table->foreignId('Filme_ID')->constrained();
+            $table->foreignId('Ator_ID')->constrained();
             $table->string('Papel');
             $table->string('Personagem');
 
