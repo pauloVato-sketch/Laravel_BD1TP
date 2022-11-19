@@ -14,9 +14,12 @@ use App\Http\Controllers\FilmeController;
 |
 */
 
+//Auth::routes();
 Route::get('/', [FilmeController::class,'index']);
 Route::get('/create/', [FilmeController::class,'create']);
-/*Route::get('/insert/', 'FilmeController@insertFilme');
-Route::get('/delete/', 'FilmeController@deleteFilme');
-Route::get('/update/', 'FilmeController@updateFilme');
-*/
+Route::get('/create/insert/', [FilmeController::class,'store']);
+Route::get('/edit/', [FilmeController::class,'edit']);
+Route::get('/delete/', [FilmeController::class,'destroy']);
+Route::get('/update/', [FilmeController::class,'update']);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

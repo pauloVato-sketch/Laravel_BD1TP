@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Filme;
 
 class FilmeController extends Controller
 {
@@ -14,7 +15,8 @@ class FilmeController extends Controller
      */
     public function index()
     {
-        $filmes = DB::select('select * from filme');
+        $filmes = Filme::get();
+        //$filmes = DB::select('select * from filme');
         return view('indexFilme',['filmes' => $filmes]);
     }
 
