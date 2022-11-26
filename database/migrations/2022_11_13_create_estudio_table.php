@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('Estudios', function (Blueprint $table) {
             $table->id('ID');
             $table->string('Nome');
-            $table->foreignId('Filme_ID')->constrained();
             $table->timestamps();
         });
     }

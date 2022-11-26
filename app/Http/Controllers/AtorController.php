@@ -3,22 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Models\Filme;
-use App\Models\Estudio;
-
-
-class FilmeController extends Controller
+use App\Models\Ator;
+class AtorController extends Controller
 {
-    /**
+   /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $filmes = Filme::get();
-        return view('Filme/indexFilme',['filmes' => $filmes]);
+        $atores = Ator::get();
+        return view('Ator/indexAtor',['atores' => $atores]);
     }
 
     /**
@@ -28,7 +24,7 @@ class FilmeController extends Controller
      */
     public function create()
     {
-        return view('Filme/insertFilme');
+        return view('Ator/insertAtor');
     }
 
     /**
@@ -40,23 +36,17 @@ class FilmeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'=>'required',
-            'director'=>'required',
-            'year_prod'=>'required|int',
-            'studio_id'=>'required'
+            'first_name'=>'required',
+            'middle_name'=>'required',
+            'last_name'=>'required'
         ]);
-        $filme = new Filme;
-        $filme->Titulo = $request->title;
-        $filme->Diretor = $request->director;
-        $filme->Ano_Producao = $request->year_prod;
-        if ( Estudio::where('ID', '=', $request->studio_id)->exists()) {
-            $filme->Estudio_ID = $request->studio_id;
-            $filme->save();
-            return redirect()->route('filme.index');
-        }else{
-            dd($request);
-            return "";
-        }
+        $ator = new Ator;
+        $ator->Primeiro_Nome = $request->first_name;
+        $ator->Nome_Meio = $request->middle_name;
+        $ator->Ultimo_Nome = $request->last_name;
+        
+        $ator->save();
+        return redirect()->route('ator.index');
     }
 
     /**
@@ -67,7 +57,7 @@ class FilmeController extends Controller
      */
     public function show($id)
     {
-        $filme = Filme::find($id);
+        $Ator = Ator::find($id);
 
     }
 
@@ -77,9 +67,9 @@ class FilmeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Filme $filme)
+    public function edit(Ator $ator)
     {
-        return view('Filme/insertFilme',['filme' => $filme]);
+        return view('Ator/insertAtor',['ator' => $ator]);
     }
 
     /**
@@ -93,16 +83,16 @@ class FilmeController extends Controller
     {
         $request->validate([
             'id'=>'required',
-            'title'=>'required',
-            'director'=>'required',
-            'year_prod'=>'required|int'
+            'first_name'=>'required',
+            'middle_name'=>'required',
+            'last_name'=>'required'
         ]);
-        $filme = Filme::find($request->id);
-        $filme->Titulo = $request->title;
-        $filme->Diretor = $request->director;
-        $filme->Ano_Producao = $request->year_prod;
-        $filme->save();
-        return redirect()->route('filme.index');
+        $ator = Ator::find($request->id);
+        $ator->Primeiro_Nome = $request->first_name;
+        $ator->Nome_Meio = $request->middle_name;
+        $ator->Ultimo_Nome = $request->last_name;
+        $ator->save();
+        return redirect()->route('ator.index');
     }
 
     /**
@@ -116,16 +106,15 @@ class FilmeController extends Controller
         $request->validate([
             'id'=>'required'
         ]); 
-        $filme = Filme::find($request->id);
-        $filme->delete();
-        return redirect()->route('filme.index');
+        $ator = Ator::find($request->id);
+        $ator->delete();
+        return redirect()->route('ator.index');
     }
 
     /* GET */
     public function delTemp()
     {
-        $filmes = Filme::get();
-        return view('Filme/deleteFilme',['filmes' => $filmes]);
+        $atores = Ator::get();
+        return view('Ator/deleteAtor',['atores' => $atores]);
     }
-    
 }

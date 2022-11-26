@@ -1,5 +1,4 @@
-@extends('templates.template')
-
+@extends('templates.templateFilme')
 @section('header')  
 @endsection
 

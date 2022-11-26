@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Models\Filme;
 use App\Models\Estudio;
 
-
-class FilmeController extends Controller
+class EstudioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +14,8 @@ class FilmeController extends Controller
      */
     public function index()
     {
-        $filmes = Filme::get();
-        return view('Filme/indexFilme',['filmes' => $filmes]);
+        $estudios = Estudio::get();
+        return view('Estudio/indexEstudio',['estudios' => $estudios]);
     }
 
     /**
@@ -28,7 +25,7 @@ class FilmeController extends Controller
      */
     public function create()
     {
-        return view('Filme/insertFilme');
+        return view('Estudio/insertEstudio');
     }
 
     /**
@@ -40,23 +37,12 @@ class FilmeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'=>'required',
-            'director'=>'required',
-            'year_prod'=>'required|int',
-            'studio_id'=>'required'
+            'name'=>'required'
         ]);
-        $filme = new Filme;
-        $filme->Titulo = $request->title;
-        $filme->Diretor = $request->director;
-        $filme->Ano_Producao = $request->year_prod;
-        if ( Estudio::where('ID', '=', $request->studio_id)->exists()) {
-            $filme->Estudio_ID = $request->studio_id;
-            $filme->save();
-            return redirect()->route('filme.index');
-        }else{
-            dd($request);
-            return "";
-        }
+        $Estudio = new Estudio;
+        $Estudio->Nome = $request->name;
+        $Estudio->save();
+        return redirect()->route('estudio.index');
     }
 
     /**
@@ -67,7 +53,7 @@ class FilmeController extends Controller
      */
     public function show($id)
     {
-        $filme = Filme::find($id);
+        $Estudio = Estudio::find($id);
 
     }
 
@@ -77,9 +63,9 @@ class FilmeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Filme $filme)
+    public function edit(Estudio $Estudio)
     {
-        return view('Filme/insertFilme',['filme' => $filme]);
+        return view('Estudio/insertEstudio',['estudio' => $Estudio]);
     }
 
     /**
@@ -93,16 +79,12 @@ class FilmeController extends Controller
     {
         $request->validate([
             'id'=>'required',
-            'title'=>'required',
-            'director'=>'required',
-            'year_prod'=>'required|int'
+            'name'=>'required'
         ]);
-        $filme = Filme::find($request->id);
-        $filme->Titulo = $request->title;
-        $filme->Diretor = $request->director;
-        $filme->Ano_Producao = $request->year_prod;
-        $filme->save();
-        return redirect()->route('filme.index');
+        $Estudio = Estudio::find($request->id);
+        $Estudio->Nome = $request->name;
+        $Estudio->save();
+        return redirect()->route('estudio.index');
     }
 
     /**
@@ -116,16 +98,15 @@ class FilmeController extends Controller
         $request->validate([
             'id'=>'required'
         ]); 
-        $filme = Filme::find($request->id);
-        $filme->delete();
-        return redirect()->route('filme.index');
+        $Estudio = Estudio::find($request->id);
+        $Estudio->delete();
+        return redirect()->route('estudio.index');
     }
 
     /* GET */
     public function delTemp()
     {
-        $filmes = Filme::get();
-        return view('Filme/deleteFilme',['filmes' => $filmes]);
+        $estudios = Estudio::get();
+        return view('Estudio/deleteEstudio',['estudios' => $estudios]);
     }
-    
 }

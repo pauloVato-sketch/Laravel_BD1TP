@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('Titulo');
             $table->string('Diretor');
             $table->integer('Ano_Producao');
+            $table->foreignId('Estudio_ID')->constrained('Estudios');
             $table->timestamps();
         });
     }
