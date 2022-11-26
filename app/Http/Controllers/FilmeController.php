@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Filme;
 use App\Models\Estudio;
-
+use App\Models\Genero;
 
 class FilmeController extends Controller
 {
@@ -28,7 +28,9 @@ class FilmeController extends Controller
      */
     public function create()
     {
-        return view('Filme/insertFilme');
+        $estudios = Estudio::get();
+        $generos = Genero::get();
+        return view('Filme/insertFilme',['estudios' => $estudios, 'generos' => $generos]);
     }
 
     /**
@@ -43,20 +45,17 @@ class FilmeController extends Controller
             'title'=>'required',
             'director'=>'required',
             'year_prod'=>'required|int',
-            'studio_id'=>'required'
+            'studio_id'=>'required',
+            'gender_id'=>'required'
         ]);
         $filme = new Filme;
         $filme->Titulo = $request->title;
         $filme->Diretor = $request->director;
         $filme->Ano_Producao = $request->year_prod;
-        if ( Estudio::where('ID', '=', $request->studio_id)->exists()) {
-            $filme->Estudio_ID = $request->studio_id;
-            $filme->save();
-            return redirect()->route('filme.index');
-        }else{
-            dd($request);
-            return "";
-        }
+        $filme->Estudio_ID = $request->studio_id;
+        $filme->Genero_ID = $request->gender_id;
+        $filme->save();
+        return redirect()->route('filme.index');
     }
 
     /**
@@ -79,7 +78,10 @@ class FilmeController extends Controller
      */
     public function edit(Filme $filme)
     {
-        return view('Filme/insertFilme',['filme' => $filme]);
+        $estudios = Estudio::get();
+        $generos = Genero::get();
+
+        return view('Filme/insertFilme',['filme' => $filme, 'estudios'=>$estudios, 'generos'=>$generos]);
     }
 
     /**

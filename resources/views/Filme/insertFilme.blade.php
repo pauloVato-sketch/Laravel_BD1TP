@@ -23,13 +23,22 @@
             <input type="text" name="year_prod" value="{{ isset($filme) ? $filme->Ano_Producao : '' }}" class="form-control text-center" placeholder="Enter Year of Production">
         </div>
         @if(isset($filme))
-            <input type="hidden" name="id" value="{{ $filme->ID  }}" >
-        @else
-        <div class="form-group" style="padding-bottom:10px">
-                <label for="0000" style="color:#ffffff;font-family:Lucida Handwriting;font-size:35px;">ID do Estudio</label>
-                <input type="text" name="studio_id" value="{{  '' }}" class="form-control text-center" placeholder="Enter Studio ID">
-        </div>
+            <input type="hidden" name="id" value="{{ $filme->ID  }}" >  
         @endif
+        <div class="form-group" style="padding-bottom:10px">
+        <select name="studio_id" id="id">  
+                @foreach($estudios as $estudio)
+                    <option value="{{$estudio->ID}}">{{$estudio->Nome}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group" style="padding-bottom:10px">
+        <select name="gender_id" id="id">  
+                @foreach($generos as $genero)
+                    <option value="{{$genero->ID}}">{{$genero->Descricao}}</option>
+                @endforeach
+            </select>
+        </div>
         <button type="submit" class="btn btn-primary mx-auto d-block">
         {{isset($filme) ? 'Atualizar' : 'Inserir' }}
         </button>

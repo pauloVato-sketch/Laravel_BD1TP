@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('Avaliacoes', function (Blueprint $table) {
             $table->foreignId('Filme_ID')->constrained();
-            $table->foreignId('Usuario_ID')->constrained();
+            $table->string('Usuario_Login');
+            $table->foreign('Usuario_Login')->references('Login')->on('Usuarios');
             $table->float('Nota')->nullable();
             $table->timestamps();
         });

@@ -23,7 +23,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>testeFilme</title>
+    <title>Filmes S.A PSVV</title>
     <link rel="stylesheet" href="{{url('assets/bootstrap-5.2.2/css/bootstrap.min.css')}}">
     @yield('header')
 </head>
@@ -53,7 +53,7 @@
             <td><a href="{{ route('estudio.index') }}" class="btn btn-success">Consultar Estudio</a></td>
         </tr>
         <tr class="col align-self-center">
-            <td><a href="{{ route('genero.index') }}" class="btn btn-danger">Consultar Genero</a></td>
+            <td><a href="{{ route('genero.index') }}" class="btn btn-success">Consultar Genero</a></td>
         </tr>
         <tr class="col align-self-center">
             <td><a href="{{ route('user.index') }}" class="btn btn-danger">Consultar Usuario</a></td>    

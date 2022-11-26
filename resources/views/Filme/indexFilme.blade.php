@@ -13,7 +13,7 @@
         <th scope="col">Diretor</th>
         <th scope="col">Ano_Produção</th>
         <th scope="col">ID Estudio</th>
-
+        <th scope="col">ID Genero</th>
         </tr>
         </thead>
         <tbody>
@@ -25,6 +25,7 @@
             <td>{{ $filme->Diretor }} </td>
             <td>{{ $filme->Ano_Producao }}</td>
             <td>{{ $filme->Estudio_ID }}</td>
+            <td>{{ $filme->Genero_ID }}</td>
             <td><a href="{{ route('filme.edit', ['filme'=>$filme->ID]) }}" class="btn btn-primary">Atualizar Filme</a></td>
         </tr>
             @endforeach

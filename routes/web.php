@@ -5,7 +5,8 @@ use App\Http\Controllers\FilmeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AtorController;
 use App\Http\Controllers\EstudioController;
-
+use App\Http\Controllers\GeneroController;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,17 @@ Route::get('/updateEstudio/{estudio:ID}/', [EstudioController::class,'edit'])->n
 Route::post('/updateEstudio/', [EstudioController::class,'update'])->name('estudio.update');
 
 Route::get('/homeGenero/', [GeneroController::class,'index'])->name('genero.index');
+Route::get('/createGenero/', [GeneroController::class,'create'])->name('genero.create');
+Route::post('/createGenero/insert/', [GeneroController::class,'store'])->name('genero.store');
+Route::get('/deleteGenero/', [GeneroController::class,'delTemp'])->name('genero.delete');
+Route::post('/deleteGenero/', [GeneroController::class,'destroy'])->name('genero.deleteReq');
+Route::get('/updateGenero/{genero:ID}/', [GeneroController::class,'edit'])->name('genero.edit');
+Route::post('/updateGenero/', [GeneroController::class,'update'])->name('genero.update');
 
-Route::get('/homeUser/', [UserController::class,'index'])->name('user.index');
-
+Route::get('/homeUser/', [UsuarioController::class,'index'])->name('user.index');
+Route::get('/createUser/', [UsuarioController::class,'create'])->name('user.create');
+Route::post('/createUser/insert/', [UsuarioController::class,'store'])->name('geusernero.store');
+Route::get('/deleteUser/', [UsuarioController::class,'delTemp'])->name('user.delete');
+Route::post('/deleteUser/', [UsuarioController::class,'destroy'])->name('user.deleteReq');
+Route::get('/updateUser/{usuario:ID}/', [UsuarioController::class,'edit'])->name('user.edit');
+Route::post('/updateUser/', [UsuarioController::class,'update'])->name('user.update');

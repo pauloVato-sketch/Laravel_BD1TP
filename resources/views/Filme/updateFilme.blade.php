@@ -19,6 +19,20 @@
             <label for="0000" style="color:#ffffff;font-family:Lucida Handwriting;font-size:35px;">Ano de Produção</label>
             <input type="text" name="year_prod" class="form-control text-center" placeholder="Enter Year of Production">
         </div>
+        <div class="form-group" style="padding-bottom:10px">
+        <select name="studio_id" id="id">  
+                @foreach($estudios as $estudio)
+                    <option value="{{$estudio->ID}}">{{$estudio->Nome}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group" style="padding-bottom:10px">
+        <select name="gender_id" id="id">  
+                @foreach($generos as $genero)
+                    <option value="{{$genero->ID}}">{{$genero->Descricao}}</option>
+                @endforeach
+            </select>
+        </div>
         <button type="submit" class="btn btn-primary mx-auto d-block">Inserir</button>
     </form>
 </div>
