@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Início</title>
+  	<title>Login</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -17,18 +17,27 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h1 class="display-1 text-white">Início</h1>
+					<h2 class="heading-section">Login</h2>
 				</div>
 			</div>
 			<div class="row justify-content-center">
-	            <div class="col form-group">
-	                <h2 class="col text-center d-inline-block align-middle text-white"> Cadastre-se </h2>	
-	            	<a href="{{ route('signup') }}" class="form-control btn btn-primary submit px-3 btn-work">Sign Up</a>
+				<div class="col-md-6 col-lg-4">
+					<div class="login-wrap p-0">
+		      	<form method="POST" action="/login/" class="signin-form">
+                    @csrf
+		      		<div class="form-group">
+		      			<input name="username" type="text"  class="form-control" placeholder="Username" required>
+		      		</div>
+	            <div class="form-group">
+	              <input name="password" id="password-field" type="password" class="form-control" placeholder="Password" required>
+	              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 	            </div>
-                <div class="col form-group">
-	                <h2 class="col text-center d-inline-block align-middle text-white"> Possui cadastro? </h2>	
-                    <a href="{{ route('login') }}" class="form-control btn btn-primary submit px-3 btn-work">Login</a>
+	            <div class="form-group">
+	            	<button type="submit" class="form-control btn btn-primary submit px-3">Login</button>
 	            </div>
+	          </form>
+		      </div>
+				</div>
 			</div>
 		</div>
 	</section>

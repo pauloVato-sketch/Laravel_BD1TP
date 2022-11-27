@@ -1,15 +1,15 @@
-@extends('templates.templateGenero')
+@extends('templates.templateUsuario')
 
 @section('header')  
 @endsection
 
 @section('content')
-        @if ($generos)
-        <form action="{{ route('genero.deleteReq') }}" method="POST">
+        @if ($usuarios)
+        <form action="{{ route('usuario.deleteReq') }}" method="POST">
             @csrf    
             <select name="id" id="id">  
-                @foreach($generos as $genero)
-                    <option value="{{$genero->ID}}">{{$genero->Descricao}}</option>
+                @foreach($usuarios as $usuario)
+                    <option value="{{$usuario->ID}}">{{$usuario->Login}}</option>
                 @endforeach
             </select>
             <button type="submit" class="btn btn-primary mx-auto d-block">Deletar</button>

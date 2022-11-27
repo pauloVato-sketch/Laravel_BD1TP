@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AtorController;
 use App\Http\Controllers\EstudioController;
 use App\Http\Controllers\GeneroController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\UsuarioController;
 
 /*
@@ -18,7 +19,13 @@ use App\Http\Controllers\UsuarioController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [UserController::class, 'index'])->name('welcome');
+Route::get('/login/', [UserController::class, 'loginScr'])->name('login');
+Route::post('/login/', [UserController::class, 'login'])->name('login');
+Route::get('/signup/', [UserController::class, 'signupScr'])->name('signup');
+Route::post('/signup/', [UserController::class, 'signup'])->name('signup');
+
+Route::get('/home/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/homeFilme/', [FilmeController::class,'index'])->name('filme.index');
 Route::get('/createFilme/', [FilmeController::class,'create'])->name('filme.create');
@@ -57,10 +64,12 @@ Route::post('/deleteGenero/', [GeneroController::class,'destroy'])->name('genero
 Route::get('/updateGenero/{genero:ID}/', [GeneroController::class,'edit'])->name('genero.edit');
 Route::post('/updateGenero/', [GeneroController::class,'update'])->name('genero.update');
 
-Route::get('/homeUser/', [UsuarioController::class,'index'])->name('user.index');
-Route::get('/createUser/', [UsuarioController::class,'create'])->name('user.create');
-Route::post('/createUser/insert/', [UsuarioController::class,'store'])->name('geusernero.store');
-Route::get('/deleteUser/', [UsuarioController::class,'delTemp'])->name('user.delete');
-Route::post('/deleteUser/', [UsuarioController::class,'destroy'])->name('user.deleteReq');
-Route::get('/updateUser/{usuario:ID}/', [UsuarioController::class,'edit'])->name('user.edit');
-Route::post('/updateUser/', [UsuarioController::class,'update'])->name('user.update');
+Route::get('/homeUsuario/', [UsuarioController::class,'index'])->name('usuario.index');
+Route::get('/createUsuario/', [UsuarioController::class,'create'])->name('usuario.create');
+Route::post('/createUsuario/insert/', [UsuarioController::class,'store'])->name('usuario.store');
+
+Route::get('/deleteUsuario/', [UsuarioController::class,'delTemp'])->name('usuario.delete');
+Route::post('/deleteUsuario/', [UsuarioController::class,'destroy'])->name('usuario.deleteReq');
+
+Route::get('/updateUsuario/{usuario:ID}/', [UsuarioController::class,'edit'])->name('usuario.edit');
+Route::post('/updateUsuario/', [UsuarioController::class,'update'])->name('usuario.update');

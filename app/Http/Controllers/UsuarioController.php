@@ -36,11 +36,17 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'description'=>'required'
+            'name'=>'required',
+            'username'=>'required',
+            'password'=>'required'
         ]);
-        $Usuario = new Usuario;
-        $Usuario->Descricao = $request->description;
-        $Usuario->save();
+        $usuario = new Usuario;
+        $usuario->Nome = $request->name;
+        $usuario->Login = $request->username;
+        $usuario->Tipo = 'TOY';
+        $usuario->Senha = $request->password;
+        $usuario->save();
+
         return redirect()->route('usuario.index');
     }
 
@@ -78,11 +84,16 @@ class UsuarioController extends Controller
     {
         $request->validate([
             'id'=>'required',
-            'description'=>'required'
+            'name'=>'required',
+            'username'=>'required',
+            'password'=>'required'
         ]);
-        $Usuario = Usuario::find($request->id);
-        $Usuario->Descricao = $request->description;
-        $Usuario->save();
+        $usuario = Usuario::find($request->id);
+        $usuario->Nome = $request->name;
+        $usuario->Login = $request->username;
+        $usuario->Senha = $request->password;
+        $usuario->save();
+
         return redirect()->route('usuario.index');
     }
 
@@ -97,9 +108,9 @@ class UsuarioController extends Controller
         $request->validate([
             'id'=>'required'
         ]); 
-        $Usuario = Usuario::find($request->id);
-        $Usuario->delete();
-        return redirect()->route('genero.index');
+        $usuario = Usuario::find($request->id);
+        $usuario->delete();
+        return redirect()->route('usuario.index');
     }
 
     /* GET */

@@ -1,39 +1,20 @@
-<!--<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Filmes S.A PSVV</title>
     <link rel="stylesheet" href="{{url('assets/bootstrap-5.2.2/css/bootstrap.min.css')}}">
-    @yield('header')
+    <link rel="stylesheet" href="{{url('assets/bootstrap-5.2.2/css/style.css')}}">
+
 </head>
-<body>
+<body class="img js-fullheight" style="background-image: url('/images/bg3.jpg');">
 <br>
 <br>
 <div class="table-responsive">
     <table class="table table-hover mx-auto w-auto">
     <thead>
-        <h1 style="text-align:center">Filmes S.A</h1>
+        <h1 style="text-align:center" class="text-white">Filmes S.A</h1>
         <th scope="col"> </th>
     </thead>
     <tbody >
@@ -55,14 +36,26 @@
         <tr class="col align-self-center">
             <td><a href="{{ route('genero.index') }}" class="btn btn-success">Consultar Genero</a></td>
         </tr>
-        <tr class="col align-self-center">
-            <td><a href="{{ route('user.index') }}" class="btn btn-danger">Consultar Usuario</a></td>    
-        </tr>
-        <tr class="col align-self-center">
-            <td><a href="{{ route('user.index') }}" class="btn btn-danger">Consultar Relatorios</a></td>    
-        </tr>
+        @if(Session::has('userType'))
+        @switch(Session::get('userType'))
+            @case('ADMIN')
+                <tr class="col align-self-center">
+                    <td><a href="{{ route('usuario.index') }}" class="btn btn-danger">Consultar Usuario</a></td>    
+                </tr>
+                <tr class="col align-self-center">
+                    <td><a href="{{ route('usuario.index') }}" class="btn btn-danger">Consultar Relatorios</a></td>    
+                </tr>
+            @break
+        @endswitch
+        @endif
     </tbody>
     </table>
 </div>
 
 </body>
+<script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+
+</html>

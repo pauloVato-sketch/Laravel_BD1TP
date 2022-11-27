@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="{{url('assets/bootstrap-5.2.2/css/bootstrap.min.css')}}">
     @yield('header')
 </head>
-<body class="bg-dark">
+<body class="img js-fullheight" style="background-image: url('/images/bg3.jpg');">
     <nav class="navbar navbar-expand-lg navbar-light ml-auto" style="background-color: #64b5f6;">
-        <a class="navbar-brand" href="/" style="margin-left:30px;">Filmes S.A</a>
+        <a class="navbar-brand" href="/home/" style="margin-left:30px;">Filmes S.A</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

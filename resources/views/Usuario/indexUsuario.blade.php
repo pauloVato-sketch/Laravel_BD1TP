@@ -9,17 +9,22 @@
         <table class="table table-dark table-bordered" style="margin:20px">
         <thead align="left" style="display: table-header-group">
         <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Descricao</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Login</th>
+        <th scope="col">Senha</th>
+        <th scope="col">Tipo de Usuario</th>
+        <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
-        @if ($generos)
-            @foreach($generos as $genero)
+        @if ($usuarios)
+            @foreach($usuarios as $usuario)
             <tr>
-            <th scope="row">{{ $genero->ID }}</th>
-            <td>{{ $genero->Descricao }}</td>
-            <td><a href="{{ route('genero.edit', ['genero'=> $genero->ID]) }}" class="btn btn-primary">Atualizar Genero</a></td>
+            <th scope="row">{{ $usuario->Nome }}</th>
+            <td>{{ $usuario->Login }}</td>
+            <td>{{ $usuario->Senha }}</td>
+            <td>{{ $usuario->Tipo }}</td>
+            <td><a href="{{ route('usuario.edit', ['usuario'=> $usuario->ID]) }}" class="btn btn-primary">Atualizar Usuario</a></td>
         </tr>
             @endforeach
         @endif
