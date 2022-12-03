@@ -14,15 +14,20 @@ return new class extends Migration
     public function up()
     {
         Schema::create('Elencos', function (Blueprint $table) {
-            $table->foreignId('Filme_ID')->constrained();
-            $table->foreignId('Ator_ID')->constrained();
+            $table->string('Filme_ID');
+            $table->foreign('Filme_ID')->references('ID')->on('Filmes');
+            $table->string('Ator_ID');
+            $table->foreign('Ator_ID')->references('ID')->on('Atores');
             $table->string('Papel');
             $table->string('Personagem');
 
             $table->timestamps();
+
+            $table->primary(['Filme_ID', 'Ator_ID']);
+
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *
@@ -30,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Elenco');
+        Schema::dropIfExists('Elencos');
     }
 };

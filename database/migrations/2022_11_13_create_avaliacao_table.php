@@ -14,11 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('Avaliacoes', function (Blueprint $table) {
-            $table->foreignId('Filme_ID')->constrained();
-            $table->string('Usuario_Login');
-            $table->foreign('Usuario_Login')->references('Login')->on('Usuarios');
+            $table->integer('Filme_ID');
+            $table->foreign('Filme_ID')->references('ID')->on('Filmes');
+            $table->integer('Usuario_ID');
+            $table->foreign('Usuario_ID')->references('ID')->on('Usuarios');
             $table->float('Nota')->nullable();
             $table->timestamps();
+            $table->primary(['Filme_ID', 'Usuario_ID']);
         });
     }
 
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Avaliacao');
+        Schema::dropIfExists('Avaliacoes');
     }
 };

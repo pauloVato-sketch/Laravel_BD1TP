@@ -5,12 +5,13 @@
 @endsection
 
 @section('content')
-    <h2 class="text-center"> Lista de Estudios </h2>
+    <h2 class="text-center text-white"> Lista de Estudios </h2>
         <table class="table table-dark table-bordered" style="margin:20px">
         <thead align="left" style="display: table-header-group">
         <tr>
         <th scope="col">ID</th>
         <th scope="col">Nome </th>
+        <th scope="col"> </th>
         </tr>
         </thead>
         <tbody>

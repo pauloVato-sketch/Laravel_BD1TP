@@ -5,12 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Contracts\Session\Session;
+
 use App\Models\Usuario;
 
 class UserController extends Controller
 {
     public function index(){
-        $this->checkIfExists();
+        if(request()->session()->has('login')){
+            return view('home');
+        }else{
+            $this->checkIfExists();
+        }
         return view('welcome');
     }
 
@@ -27,6 +33,7 @@ class UserController extends Controller
         {
             Auth::loginUsingId($usuario->ID);
             $userType = $usuario->Tipo;
+            $request->session()->put('login',   $usuario->Login);
             $request->session()->put('userType',  $userType);
             return view('home');
         }else{
@@ -57,28 +64,32 @@ class UserController extends Controller
     public function checkIfExists(){
         if(!(Usuario::exists())){
             $userP = Usuario::create(array(
-                'Nome' => 'Paulo Lopes',
-                'Login' => 'phour',
-                'Senha' => bcrypt('sambalele'),
-                'Tipo' => 'ADMIN'
+                 'ID'=>1,
+                 'Nome' => 'Paulo Lopes',
+                 'Login' => 'phour',
+                 'Senha' => bcrypt('sambalele'),
+                 'Tipo' => 'ADMIN'
            ));
            $userS = Usuario::create(array(
-               'Nome' => 'Samuel Augusto',
-               'Login' => 'samuca',
-               'Senha' => bcrypt('samuel123'),
-               'Tipo' => 'ADMIN'
+                'ID'=>2,
+                'Nome' => 'Samuel Augusto',
+                'Login' => 'samuca',
+                'Senha' => bcrypt('samuel123'),
+                'Tipo' => 'ADMIN'
            ));
            $userVG = Usuario::create(array(
-               'Nome' => 'Vitor Godinho',
-               'Login' => 'cabuloso',
-               'Senha' => bcrypt('ronaldo'),
-               'Tipo' => 'ADMIN'
+                'ID'=>3,
+                'Nome' => 'Vitor Godinho',
+                'Login' => 'cabuloso',
+                'Senha' => bcrypt('ronaldo'),
+                'Tipo' => 'ADMIN'
            ));
            $userVH = Usuario::create(array(
-               'Nome' => 'Vinicius Hiago',
-               'Login' => 'sheypado',
-               'Senha' => bcrypt('veneno'),
-               'Tipo' => 'ADMIN'
+                'ID'=>4,
+                'Nome' => 'Vinicius Hiago',
+                'Login' => 'sheypado',
+                'Senha' => bcrypt('veneno'),
+                'Tipo' => 'ADMIN'
            ));
         }
         

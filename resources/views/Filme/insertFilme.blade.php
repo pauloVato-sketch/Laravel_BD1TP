@@ -7,7 +7,6 @@
     
     <form action="{{ isset($filme) ? route('filme.update') : route('filme.store') }}" class="justify-content-center" method="POST">
     @csrf    
-        <input type="hidden" name="id" value="{{ isset($filme) ? $filme->ID : '' }}" >
         <div class="form-group">
             <label for="Exemplo" style="color:#ffffff;font-family:Lucida Handwriting;font-size:35px;">Titulo</label>
             <input type="text" name="title" value="{{ isset($filme) ? $filme->Titulo : '' }}" class="form-control text-center" placeholder="Enter Title">
@@ -21,6 +20,10 @@
         <div class="form-group" style="padding-bottom:10px">
             <label for="0000" style="color:#ffffff;font-family:Lucida Handwriting;font-size:35px;">Ano de Produção</label>
             <input type="text" name="year_prod" value="{{ isset($filme) ? $filme->Ano_Producao : '' }}" class="form-control text-center" placeholder="Enter Year of Production">
+        </div>
+        <div class="form-group" style="padding-bottom:10px">
+            <label for="0000" style="color:#ffffff;font-family:Lucida Handwriting;font-size:35px;">Custo de Produção</label>
+            <input type="text" name="prod_cost" value="{{ isset($filme) ? $filme->Custo_Producao : '' }}" class="form-control text-center" placeholder="Enter Cost of Production">
         </div>
         @if(isset($filme))
             <input type="hidden" name="id" value="{{ $filme->ID  }}" >  
@@ -39,6 +42,7 @@
                 @endforeach
             </select>
         </div>
+        <input type="hidden" name="avg_cost" value="{{ isset($filme) ? $filme->Nota_Geral : 0 }}">
         <button type="submit" class="btn btn-primary mx-auto d-block">
         {{isset($filme) ? 'Atualizar' : 'Inserir' }}
         </button>

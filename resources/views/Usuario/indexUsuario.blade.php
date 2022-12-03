@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <h2 class="text-center">Lista de Usuarios</h2>
+    <h2 class="text-center text-white">Lista de Usuarios</h2>
         <table class="table table-dark table-bordered" style="margin:20px">
         <thead align="left" style="display: table-header-group">
         <tr>

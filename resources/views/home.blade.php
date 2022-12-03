@@ -6,50 +6,51 @@
     <title>Filmes S.A PSVV</title>
     <link rel="stylesheet" href="{{url('assets/bootstrap-5.2.2/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{url('assets/bootstrap-5.2.2/css/style.css')}}">
-
 </head>
 <body class="img js-fullheight" style="background-image: url('/images/bg3.jpg');">
-<br>
-<br>
 <div class="table-responsive">
-    <table class="table table-hover mx-auto w-auto">
-    <thead>
-        <h1 style="text-align:center" class="text-white">Filmes S.A</h1>
-        <th scope="col"> </th>
-    </thead>
-    <tbody >
-    <tr class="row align-self-center" style="margin-left:10px">
-            <td><a href="{{ route('filme.index') }}" class="btn btn-success">Consultar Filmes</a></td>
-        </tr>
-        <tr class="row align-self-center" style="margin-left:20px">
-            <td><a href="{{ route('ator.index') }}" class="btn btn-success">Consultar Ator</a></td>
-        </tr>
-        <tr class="justify-content-center">
-            <td><a href="{{ route('avaliacao.index') }}" class="btn btn-danger">Consultar Avaliacao</a></td>
-        </tr>
-        <tr class="col align-self-center">
-            <td><a href="{{ route('elenco.index') }}" class="btn btn-danger">Consultar Elenco</a></td>
-        </tr>
-        <tr class="col align-self-center">
-            <td><a href="{{ route('estudio.index') }}" class="btn btn-success">Consultar Estudio</a></td>
-        </tr>
-        <tr class="col align-self-center">
-            <td><a href="{{ route('genero.index') }}" class="btn btn-success">Consultar Genero</a></td>
-        </tr>
-        @if(Session::has('userType'))
-        @switch(Session::get('userType'))
-            @case('ADMIN')
-                <tr class="col align-self-center">
-                    <td><a href="{{ route('usuario.index') }}" class="btn btn-danger">Consultar Usuario</a></td>    
-                </tr>
-                <tr class="col align-self-center">
-                    <td><a href="{{ route('usuario.index') }}" class="btn btn-danger">Consultar Relatorios</a></td>    
-                </tr>
-            @break
-        @endswitch
-        @endif
-    </tbody>
-    </table>
+<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h1 class="display-3 text-white">Home</h1>
+				</div>
+			</div>
+            <div class="col justify-content-center">
+	            <div class="row form-group">
+                    <a href="{{ route('filme.index') }}" class="btn btn-success">Consultar Filmes</a>
+	            </div><br>
+                <div class="row form-group">
+                    <a href="{{ route('ator.index') }}" class="btn btn-success">Consultar Ator</a>
+                </div><br>
+                <div class="row form-group">
+                    <a href="{{ route('avaliacao.index') }}" class="btn btn-success">Consultar Avaliacao</a>
+                </div><br>
+                <div class="row form-group">
+                    <a href="{{ route('elenco.index') }}" class="btn btn-success">Consultar Elenco</a>
+                </div><br>
+                <div class="row form-group">
+                    <a href="{{ route('estudio.index') }}" class="btn btn-success">Consultar Estudio</a>
+                </div><br>
+                <div class="row form-group">
+                    <a href="{{ route('genero.index') }}" class="btn btn-success">Consultar Genero</a>
+                </div><br>
+                @if(Session::has('userType'))
+                    @switch(Session::get('userType'))
+                        @case('ADMIN')
+                            <div class="row form-group">
+                                <a href="{{ route('usuario.index') }}" class="btn btn-success">Consultar Usuario</a>
+                            </div><br>
+                            <div class="row form-group">
+                                <a href="{{ route('relatorio.index') }}" class="btn btn-success">Consultar Relatorios</a>
+                            </div><br>
+                        @break
+                    @endswitch
+                @endif
+			</div>
+		</div>
+	</section>
+
 </div>
 
 </body>

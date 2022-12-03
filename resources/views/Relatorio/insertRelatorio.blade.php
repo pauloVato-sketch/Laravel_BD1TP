@@ -17,6 +17,7 @@
         </div>
         <br>
         @if(!(isset($elenco)))
+            <input type="hidden" name="id" value="{{ '' }}" >
             <div class="form-group" style="padding-bottom:10px">
                 <select name="movie_id" id="id">  
                     @foreach($filmes as $filme)

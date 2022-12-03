@@ -1,30 +1,30 @@
-@extends('templates.templateElenco')
+@extends('templates.templateAvaliacao')
 
 @section('header')  
 @endsection
 
 @section('content')
-        @if ($elencos)
-        <form action="{{ route('elenco.deleteReq') }}" method="POST">
+        @if ($avaliacoes)
+        <form action="{{ route('avaliacao.deleteReq') }}" method="POST">
             @csrf    
             <select name="id" id="id">  
-            @foreach($elencos as $elenco)
+            @foreach($avaliacoes as $avaliacao)
                     
                     @foreach($filmes as $filme)
-                        @if($filme->ID == $elenco->Filme_ID)
+                        @if($filme->ID == $avaliacao->Filme_ID)
                             @php 
                                 $filmeT = $filme
                             @endphp
                         @endif
                     @endforeach
-                    @foreach($atores as $ator)
-                        @if($ator->ID == $elenco->Ator_ID)
+                    @foreach($usuarios as $usuario)
+                        @if($usuario->ID == $avaliacao->Usuario_ID)
                             @php 
-                                $atorT = $ator
+                                $usuarioT = $usuario
                             @endphp
                         @endif
                     @endforeach
-                        <option value="{{ $elenco->Filme_ID.' '.$elenco->Ator_ID }}">{{$elenco->Papel." - ".$elenco->Personagem." - ".$filmeT->Titulo." - ".$atorT->Primeiro_Nome." ".$atorT->Nome_Meio." ".$atorT->Ultimo_Nome}}</option>
+                        <option value="{{ $avaliacao->Filme_ID.' '.$avaliacao->Usuario_ID }}">{{$filmeT->Titulo." - ".$usuario->Login." - ".$avaliacao->Nota}}</option>
             @endforeach
 
             </select>

@@ -45,6 +45,8 @@ class FilmeController extends Controller
             'title'=>'required',
             'director'=>'required',
             'year_prod'=>'required|int',
+            'prod_cost'=>'required',
+            'avg_cost'=>'required',
             'studio_id'=>'required',
             'gender_id'=>'required'
         ]);
@@ -52,6 +54,8 @@ class FilmeController extends Controller
         $filme->Titulo = $request->title;
         $filme->Diretor = $request->director;
         $filme->Ano_Producao = $request->year_prod;
+        $filme->Custo_Producao = $request->prod_cost;
+        $filme->Nota_Geral = $request->avg_cost;
         $filme->Estudio_ID = $request->studio_id;
         $filme->Genero_ID = $request->gender_id;
         $filme->save();
@@ -97,11 +101,15 @@ class FilmeController extends Controller
             'id'=>'required',
             'title'=>'required',
             'director'=>'required',
+            'prod_cost'=>'required',
+            'avg_cost'=>'required',
             'year_prod'=>'required|int'
         ]);
         $filme = Filme::find($request->id);
         $filme->Titulo = $request->title;
         $filme->Diretor = $request->director;
+        $filme->Custo_Producao = $request->prod_cost;
+        $filme->Nota_Geral = $request->avg_cost;
         $filme->Ano_Producao = $request->year_prod;
         $filme->save();
         return redirect()->route('filme.index');

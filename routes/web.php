@@ -1,11 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FilmeController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AtorController;
+use App\Http\Controllers\AvaliacaoController;
+use App\Http\Controllers\ElencoController;
 use App\Http\Controllers\EstudioController;
+use App\Http\Controllers\FilmeController;
 use App\Http\Controllers\GeneroController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RelatorioController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UsuarioController;
 
@@ -45,8 +48,20 @@ Route::post('/updateAtor/', [AtorController::class,'update'])->name('ator.update
 
 
 Route::get('/homeAvaliacao/', [AvaliacaoController::class,'index'])->name('avaliacao.index');
+Route::get('/createAvaliacao/', [AvaliacaoController::class,'create'])->name('avaliacao.create');
+Route::post('/createAvaliacao/insert/', [AvaliacaoController::class,'store'])->name('avaliacao.store');
+Route::get('/deleteAvaliacao/', [AvaliacaoController::class,'delTemp'])->name('avaliacao.delete');
+Route::post('/deleteAvaliacao/', [AvaliacaoController::class,'destroy'])->name('avaliacao.deleteReq');
+Route::get('/updateAvaliacao/{Filme_ID}/{Usuario_ID}/', [AvaliacaoController::class,'edit'])->name('avaliacao.edit');
+Route::post('/updateAvaliacao/', [AvaliacaoController::class,'update'])->name('avaliacao.update');
 
 Route::get('/homeElenco/', [ElencoController::class,'index'])->name('elenco.index');
+Route::get('/createElenco/', [ElencoController::class,'create'])->name('elenco.create');
+Route::post('/createElenco/insert/', [ElencoController::class,'store'])->name('elenco.store');
+Route::get('/deleteElenco/', [ElencoController::class,'delTemp'])->name('elenco.delete');
+Route::post('/deleteElenco/', [ElencoController::class,'destroy'])->name('elenco.deleteReq');
+Route::get('/updateElenco/{Filme_ID}/{Ator_ID}/', [ElencoController::class,'edit'])->name('elenco.edit');
+Route::post('/updateElenco/', [ElencoController::class,'update'])->name('elenco.update');
 
 Route::get('/homeEstudio/', [EstudioController::class,'index'])->name('estudio.index');
 Route::get('/createEstudio/', [EstudioController::class,'create'])->name('estudio.create');
@@ -73,3 +88,18 @@ Route::post('/deleteUsuario/', [UsuarioController::class,'destroy'])->name('usua
 
 Route::get('/updateUsuario/{usuario:ID}/', [UsuarioController::class,'edit'])->name('usuario.edit');
 Route::post('/updateUsuario/', [UsuarioController::class,'update'])->name('usuario.update');
+
+
+
+
+
+Route::get('/homeRelatorio/', [RelatorioController::class,'index'])->name('relatorio.index');
+Route::get('/showRelatorio/{op}/', [RelatorioController::class,'show'])->name('relatorio.show');
+Route::get('/createRelatorio/', [RelatorioController::class,'create'])->name('relatorio.create');
+Route::post('/createRelatorio/insert/', [RelatorioController::class,'store'])->name('relatorio.store');
+    
+Route::get('/deleteRelatorio/', [RelatorioController::class,'delTemp'])->name('relatorio.delete');
+Route::post('/deleteRelatorio/', [RelatorioController::class,'destroy'])->name('relatorio.deleteReq');
+
+Route::get('/updateRelatorio/{usuario:ID}/', [RelatorioController::class,'edit'])->name('relatorio.edit');
+Route::post('/updateRelatorio/', [RelatorioController::class,'update'])->name('relatorio.update');

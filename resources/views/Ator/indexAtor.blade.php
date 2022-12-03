@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <h2 class="text-center"> Lista de Atores </h2>
+    <h2 class="text-center text-white"> Lista de Atores </h2>
         <table class="table table-dark table-bordered" style="margin:20px">
         <thead align="left" style="display: table-header-group">
         <tr>
@@ -13,6 +13,8 @@
         <th scope="col">Primeiro_Nome </th>
         <th scope="col">Nome_Meio</th>
         <th scope="col">Ultimo_Nome</th>
+        <th scope="col"> </th>
+
         </tr>
         </thead>
         <tbody>

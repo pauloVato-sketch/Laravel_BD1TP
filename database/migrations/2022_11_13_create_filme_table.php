@@ -20,6 +20,8 @@ return new class extends Migration
             $table->integer('Ano_Producao');
             $table->foreignId('Estudio_ID')->constrained('Estudios');
             $table->foreignId('Genero_ID')->constrained('Generos');
+            $table->double('Custo_Producao');
+            $table->double('Nota_Geral');
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Filme');
+        Schema::dropIfExists('Filmes');
     }
 };

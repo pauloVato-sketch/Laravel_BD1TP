@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-    <h2 class="text-center"> Lista de Filmes </h2>
+    <h2 class="text-center text-white"> Lista de Filmes </h2>
         <table class="table table-dark table-bordered" style="margin:20px">
         <thead align="left" style="display: table-header-group">
         <tr>
@@ -12,8 +12,11 @@
         <th scope="col">Titulo </th>
         <th scope="col">Diretor</th>
         <th scope="col">Ano_Produção</th>
+        <th scope="col">Custo_Produção</th>
+        <th scope="col">Nota Geral</th>
         <th scope="col">ID Estudio</th>
         <th scope="col">ID Genero</th>
+        <th scope="col"> </th>
         </tr>
         </thead>
         <tbody>
@@ -24,6 +27,8 @@
             <td>{{ $filme->Titulo }}</td>
             <td>{{ $filme->Diretor }} </td>
             <td>{{ $filme->Ano_Producao }}</td>
+            <td>{{ $filme->Custo_Producao }}</td>
+            <td>{{ $filme->Nota_Geral }}</td>
             <td>{{ $filme->Estudio_ID }}</td>
             <td>{{ $filme->Genero_ID }}</td>
             <td><a href="{{ route('filme.edit', ['filme'=>$filme->ID]) }}" class="btn btn-primary">Atualizar Filme</a></td>
